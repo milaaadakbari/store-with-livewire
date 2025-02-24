@@ -1,6 +1,7 @@
 <div class="grid-cols-1 gap-6 pt-5">
     <div class="panel">
         <div class="panel">
+            <h1 class="m-4 text-xl font-semibold">ایجاد کاربر</h1>
             <form class="space-y-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
@@ -42,10 +43,10 @@
                 <tbody>
                 <tr>
                     <td></td>
-                    <td class="whitespace-nowrap">1</td>
                     <td class="whitespace-nowrap">میلاد اکبری</td>
                     <td class="whitespace-nowrap">milad@yahoo.com</td>
                     <td class="whitespace-nowrap">0911</td>
+                    <td class="whitespace-nowrap"></td>
                     <td x-text="data.progress" class="whitespace-nowrap"
                         :class="{'text-success': data.status === 'Complete', 'text-secondary': data.status === 'Pending', 'text-info': data.status === 'In Progress', 'text-danger': data.status === 'Canceled'}"></td>
                 </tr>

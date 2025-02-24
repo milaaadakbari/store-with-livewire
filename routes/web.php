@@ -17,7 +17,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin',\App\Livewire\Admin\Panel::class)->name('panel');
-Route::get('/admin/users',\App\Livewire\Admin\Users\UserList::class)->name('admin.users.list');
+
 
 require __DIR__.'/auth.php';

@@ -9,9 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{url('panel/css/perfect-scrollbar.min.css')}}"/>
 
     {{--    <link rel="stylesheet" type="text/css" media="screen" href="{{url('panel/css/style.css')}}"/>--}}
-    <link rel="stylesheet" type="text/css" media="screen" href="{{url('tailwind/assets/app-Csek857p.css')}}"/>
-
-
+{{--    <link rel="stylesheet" type="text/css" media="screen" href="{{url('tailwind/assets/app-Csek857p.css')}}"/>--}}
+    @vite('resources/css/app.css')
     <link defer rel="stylesheet" type="text/css" media="screen" href="{{url('panel/css/animate.css')}}"/>
     <script src="{{url('panel/js/perfect-scrollbar.min.js')}}"></script>
     <script defer src="{{url('panel/js/popper.min.js')}}"></script>
