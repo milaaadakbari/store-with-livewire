@@ -1,22 +1,9 @@
 <div class="grid-cols-1 gap-6 pt-5">
     <div class="panel">
         <div class="panel">
-
-            @if(session()->has('success'))
-                <div class="flex items-center rounded bg-success-light p-3.5 text-success dark:bg-success-dark-light">
-                    <span class="ltr:pr-2 rtl:pl-2"><strong class="ltr:mr-1 rtl:ml-1">موفق!</strong>{{session('success')}}</span>
-                    <button type="button" class="hover:opacity-80 ltr:ml-auto rtl:mr-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-            @endif
-
-
+           @include('admin.layouts.alert')
             <h1 class="m-4 text-xl font-semibold">ایجاد کاربر</h1>
-            <form wire:submit="CreateUser" class="space-y-5">
+            <form wire:submit="CreateRow" class="space-y-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                         <label for="gridEmail">نام و نام خانوادگی</label>
@@ -50,7 +37,11 @@
                         @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary !mt-6">ثبت</button>
+                @if($editIndex)
+                    <button wire:click.prevent="updateRow" class="btn btn-primary !mt-6">ویرایش</button>
+                @else
+                    <button wire:click.prevent="createRow" class="btn btn-success !mt-6">ثبت</button>
+                @endif
             </form>
         </div>
     </div>
