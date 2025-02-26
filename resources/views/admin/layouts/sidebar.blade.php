@@ -51,6 +51,9 @@
                         <li>
                             <a href="{{route('admin.users.list')}}">کاربران</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.categories.list')}}">دسته بندی</a>
+                        </li>
                     </ul>
                 </li>
 

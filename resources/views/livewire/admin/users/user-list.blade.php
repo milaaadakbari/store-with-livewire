@@ -3,7 +3,7 @@
         <div class="panel">
            @include('admin.layouts.alert')
             <h1 class="m-4 text-xl font-semibold">ایجاد کاربر</h1>
-            <form wire:submit="CreateRow" class="space-y-5">
+            <form  class="space-y-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                         <label for="gridEmail">نام و نام خانوادگی</label>
