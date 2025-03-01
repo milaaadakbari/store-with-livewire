@@ -21,7 +21,7 @@ class CategoryList extends Component
     use WithPagination,WithFileUploads;
 
     #[Layout('admin.master'),Title('لیست دسته بندی ها')]
-    #[Validate('required')]
+    #[Validate('required|unique:categories,name')]
     public $name;
     #[Validate('nullable|mimes:jpeg,jpg,png')]
     public $image;
@@ -29,6 +29,8 @@ class CategoryList extends Component
     public $parent_id;
 
     public $editIndex;
+
+    public $search;
 
     public function createRow(): void
     {
@@ -85,6 +87,12 @@ class CategoryList extends Component
     public function DestroyRow($category_id): void
     {
         Category::destroy($category_id);
+   }
+
+    public function searchData(): void
+    {
+        $this->categories=Category::query()->where('name','like','%'.$this->search.'%')
+            ->with('parentCategory')->paginate(5);
    }
 
 

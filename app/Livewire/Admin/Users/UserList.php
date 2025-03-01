@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Users;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
@@ -28,6 +29,8 @@ class UserList extends Component
     public $password;
 
     public $editIndex;
+
+    public $search;
 
     public function CreateRow(): void
     {
@@ -75,9 +78,12 @@ class UserList extends Component
     #[Computed()]
     public function users():Paginator
     {
-        return User::query()->paginate(1);
+        return User::query()->paginate(5);
     }
-
+    public function searchData(): void
+    {
+        $this->users=User::query()->where('name','like','%'.$this->search.'%')->paginate(5);
+    }
 
     public function render(): View
     {

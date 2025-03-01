@@ -54,6 +54,12 @@
                         <li>
                             <a href="{{route('admin.categories.list')}}">دسته بندی</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.brands.list')}}">برندها</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.colors.list')}}">رنگ ها</a>
+                        </li>
                     </ul>
                 </li>
 

@@ -2,7 +2,9 @@
     <div class="panel">
         <div class="panel">
            @include('admin.layouts.alert')
+            @include('admin.layouts.waiting')
             <h1 class="m-4 text-xl font-semibold">ایجاد کاربر</h1>
+
             <form  class="space-y-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
@@ -44,6 +46,12 @@
                 @endif
             </form>
         </div>
+    </div>
+    <div class="flex flex-1 mb-5">
+        <div class="flex items-center justify-center border border-[#e0e6ed] bg-[#eee] px-3 font-semibold ltr:rounded-l-md ltr:border-r-0 rtl:rounded-r-md rtl:border-l-0 dark:border-[#17263c] dark:bg-[#1b2e4b]">
+            جستجو
+        </div>
+        <input wire:model="search" @keyup.enter="$wire.searchData" type="text" placeholder="سرچ کنید" class="form-input ltr:rounded-l-none rtl:rounded-r-none">
     </div>
     <div class="mb-5">
         <div class="table-responsive">
