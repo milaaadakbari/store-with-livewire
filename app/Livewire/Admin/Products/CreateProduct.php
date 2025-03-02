@@ -66,11 +66,11 @@ class CreateProduct extends Component
             'brand_id' =>$this->brand_id,
             'status'=>ProductStatus::ACTIVE->value,
             'slug' => make_slug($this->name),
-            'image' => $this->image
+            'image' => $image
         ]);
         session()->flash('success', 'محصول جدید ایجاد شد');
         $this->reset();
-        $this->redirect(route('admin.products.list'));
+        $this->redirectRoute('admin.products.list');
     }
 
 
@@ -83,3 +83,4 @@ class CreateProduct extends Component
         return view('livewire.admin.products.create-product',compact('categories','brands'));
     }
 }
+
