@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Color extends Model
+class Guaranty extends Model
 {
-    protected $fillable = [
+    protected $fillable=[
         'name',
-        'code'
     ];
     public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {

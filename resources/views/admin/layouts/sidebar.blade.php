@@ -60,6 +60,12 @@
                         <li>
                             <a href="{{route('admin.colors.list')}}">رنگ ها</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.guaranties.list')}}">گارانتی ها</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.products.list')}}">محصولات</a>
+                        </li>
                     </ul>
                 </li>
 
