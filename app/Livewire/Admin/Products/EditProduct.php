@@ -27,12 +27,6 @@ class EditProduct extends Component
     public $image;
     public $product_image;
     public $category_id,$brand_id;
-
-
-    public $editIndex;
-
-    public $search;
-
     public $product;
 
 
@@ -46,44 +40,46 @@ class EditProduct extends Component
         $this->count=$product->count;
         $this->max_sell=$product->max_sell;
         $this->description=$product->description;
-        $this->image=$product->image;
+        $this->product_image=$product->image;
         $this->category_id=$product->category_id;
         $this->brand_id=$product->brand_id;
-
     }
 
     public function updateRow(): void
     {
-        if ($this->image) {
-            $image=$this->image->hashName();
-            $this->image->storeAs('images/products/',$image,'public');
+        if($this->image){
+            $image = $this->image->hashName();
+            $this->image->storeAs('images/products/', $image,'public');
         }
+
         $this->validate([
-            'name' => 'required','string','unique:products,name,'.$this->product->id,
-            'e_name' => 'required','string','unique:products,name,'.$this->product->id,
-            'price' => 'required',
-            'category_id' => 'required',
-            'brand_id' =>'required',
-            'image' => 'required|mimes:jpeg,jpg,png',
+            'name'=>'required|unique:products,name,'. $this->product->id,
+            'e_name' => 'required|unique:products,e_name,'. $this->product->id,
+            'price'=>'required',
+//            'image' => 'required|mimes:jpeg,jpg,png',
+            'category_id'=>'required',
+            'brand_id'=>'required'
         ]);
+
 
         Product::query()->find($this->product->id)->update([
             'name' => $this->name,
             'e_name' => $this->e_name,
-            'price' => $this->price,
-            'discount' => $this->discount,
-            'count' => $this->count,
-            'max_sell' => $this->max_sell,
-            'description' => $this->description,
-            'category_id' => $this->category_id,
-            'brand_id' =>$this->brand_id,
-            'status'=>ProductStatus::ACTIVE->value,
             'slug' => make_slug($this->name),
-            'image' => $this->image ? $image: $this->product->image,
+            'price'=>$this->price,
+            'discount'=>$this->discount,
+            'count'=>$this->count,
+            'max_sell'=>$this->max_sell,
+            'image' => $this->image ? $image : $this->product->image,
+            'description'=>$this->description,
+            'category_id'=>$this->category_id,
+            'brand_id'=>$this->brand_id
         ]);
+
         session()->flash('success', 'محصول ویرایش شد');
         $this->reset();
         $this->redirectRoute('admin.products.list');
+
     }
 
 

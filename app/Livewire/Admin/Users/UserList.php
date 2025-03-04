@@ -32,7 +32,7 @@ class UserList extends Component
 
     public $search;
 
-    public function CreateRow(): void
+    public function createRow(): void
     {
         $this->validate();
         User::query()->create([
