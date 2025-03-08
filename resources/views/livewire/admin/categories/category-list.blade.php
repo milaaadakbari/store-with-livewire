@@ -67,6 +67,7 @@
                     <th class="text-center">نام دسته بندی</th>
                     <th class="text-center">دسته بندی پدر</th>
                     <th class="text-center">تاریخ دسته بندی</th>
+                    <th class="text-center">ویژگی ها</th>
                     <th class="text-center">عملیات</th>
                 </tr>
                 </thead>
@@ -80,6 +81,11 @@
                         <td class="whitespace-nowrap">{{$category->name}}</td>
                         <td class="whitespace-nowrap">{{$category->parentCategory->name}}</td>
                         <td class="whitespace-nowrap">{{\Hekmatinasser\Verta\Verta::instance($category->created_at)->formatJalaliDate()}}</td>
+                        <td class="whitespace-nowrap">
+                            <a href="{{route('admin.categories.attributes',$category->id)}}" type="button" class="btn btn-success m-2 w-[100px] ">
+                                ویژگی ها
+                            </a>
+                        </td>
                         <td class="border-b border-[#ebedf2] p-3 text-center dark:border-[#191e3a]">
                             <button wire:click="editRow({{$category->id}})" type="button" x-tooltip="Edit">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -109,7 +115,6 @@
                                           stroke="currentColor" stroke-width="1.5"></path>
                                 </svg>
                             </button>
-                        </td>
                     </tr>
                 @endforeach
 

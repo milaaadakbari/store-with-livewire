@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\Brands\BrandList;
+use App\Livewire\Admin\Categories\CategoryAttributes;
 use App\Livewire\Admin\Categories\CategoryList;
 use App\Livewire\Admin\Categories\TrashedCategoryList;
 use App\Livewire\Admin\Colors\ColorList;
@@ -23,7 +24,7 @@ Route::get('/users', UserList::class)->name('admin.users.list');
 //----categories-----/
 Route::get('/categories', CategoryList::class)->name('admin.categories.list');
 Route::get('/trashed_categories', TrashedCategoryList::class)->name('admin.trashed_categories.list');
-
+Route::get('/category_attributes/{category}', CategoryAttributes::class)->name('admin.categories.attributes');
 //----brands-----/
 Route::get('/brands', BrandList::class)->name('admin.brands.list');
 
