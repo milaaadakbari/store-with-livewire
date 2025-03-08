@@ -28,7 +28,7 @@ class ProductPrices extends Component
         return ProductPrice::query()->where('product_id',$this->product->id)->paginate(10);
     }
 
-    #[On('destroy-productPrice')]
+    #[On('destroy-product-Price')]
     public function DestroyRow($product_price_id): void
     {
         ProductPrice::destroy($product_price_id);

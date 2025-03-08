@@ -16,6 +16,7 @@
     <script defer src="{{url('panel/js/popper.min.js')}}"></script>
     <script defer src="{{url('panel/js/tippy-bundle.umd.min.js')}}"></script>
     <script defer src="{{url('panel/js/sweetalert.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <wireui:scripts />
 </head>
 
