@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -42,5 +43,10 @@ class Product extends Model
     public function guaranties(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Guaranty::class, 'guaranty_product');
+    }
+
+    public function productProperties(): HasMany
+    {
+      return $this->hasMany(ProductProperty::class);
     }
 }

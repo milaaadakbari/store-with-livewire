@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
@@ -20,7 +21,7 @@ class Category extends Model
     {
         return $this->belongsTo(Category::class, 'parent_id','id')->withDefault(['name' => 'دسته بندی اصلی']);
     }
-    public function childCategory(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function childCategory(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id','id');
     }
@@ -54,8 +55,13 @@ class Category extends Model
         });
     }
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function categoryAttributes(): HasMany
+    {
+      return $this->hasMany(CategoryAttribute::class);
     }
 }

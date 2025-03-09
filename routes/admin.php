@@ -41,5 +41,6 @@ Route::get('/edit_product/{product}', EditProduct::class)->name('admin.edit.prod
 Route::get('/product_prices/{product}', ProductPrices::class)->name('admin.product.prices');
 Route::get('/create_product_prices/{product}', CreateProductPrice::class)->name('admin.create.product.prices');
 Route::get('/edit_product_prices/{productPrice}', EditProductPrice::class)->name('admin.edit.product.prices');
+Route::get('/product_properties/{product}', \App\Livewire\Admin\Products\ProductProperties::class)->name('admin.product.properties');
 
 

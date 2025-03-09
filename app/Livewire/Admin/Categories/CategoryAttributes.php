@@ -56,7 +56,9 @@ class CategoryAttributes extends Component
     #[Computed()]
     public function categoryAttributes():Paginator
     {
-        return CategoryAttribute::query()->paginate(5);
+        return CategoryAttribute::query()
+            ->where('category_id',$this->category->id)
+            ->paginate(5);
     }
 
     #[On('destroy-category-attribute')]
