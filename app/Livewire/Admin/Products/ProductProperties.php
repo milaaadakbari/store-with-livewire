@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -40,6 +41,12 @@ class ProductProperties extends Component
             ->groupBy('category_attribute_id')
             ->where('product_id', $this->product->id)
             ->get();
+    }
+
+    #[On('destroy-property')]
+    public function destroyProductProperty($property_id)
+    {
+        ProductProperty::destroy($property_id);
     }
 
     #[Layout('admin.master'), Title('لیست ویژگی های محصول')]

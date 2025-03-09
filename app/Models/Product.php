@@ -49,4 +49,9 @@ class Product extends Model
     {
       return $this->hasMany(ProductProperty::class);
     }
+
+    public function galleries(): HasMany
+    {
+        return $this->hasMany(Gallery::class);
+    }
 }
