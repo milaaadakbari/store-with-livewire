@@ -3,30 +3,50 @@
 namespace App\Livewire\Admin\Products;
 
 use App\Models\Gallery;
+use App\Models\Product;
 use Illuminate\Contracts\View\View;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class ProductGallery extends Component
 {
     use WithFileUploads;
+
+    public Product $product;
+
+    #[Validate(['images.*' => 'image|max:1024'])]
     public $images=[];
 
     public function createRow()
     {
         if ($this->images) {
             foreach($this->images as $image){
-                $name=$this->images->hashName();
-                $this->images->storeAs('images/products/',$name,'public');
+                $name=$image->hashName();
+                $image->storeAs('images/products/',$name,'public');
                 Gallery::query()->create([
-                    'name'=>$name,
-                    'product_id'=>$this->product->id
+                    'name' => $name,
+                    'product_id' => $this->product->id,
                 ]);
-                session()->flash('success', 'گالری جدید ایجاد شد');
             }
         }
+
+        session()->flash('success', 'گالری ایجاد شد');
+    }
+
+    #[Computed]
+    public function gallerire(): \Illuminate\Database\Eloquent\Collection
+    {
+        return Gallery::query()->where('product_id',$this->product->id)->get();
+    }
+
+    public function removeImage($gallery_id)
+    {
+        Gallery::destroy($gallery_id);
+        session()->flash('success', 'عکس از گالری حذف شد');
     }
 
 

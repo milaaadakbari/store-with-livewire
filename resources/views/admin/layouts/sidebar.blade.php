@@ -66,6 +66,12 @@
                         <li>
                             <a href="{{route('admin.products.list')}}">محصولات</a>
                         </li>
+                        <li>
+                            <a href="{{route('admin.roles.list')}}">نقش ها</a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.permissions.list')}}">مجوزها</a>
+                        </li>
                     </ul>
                 </li>
 

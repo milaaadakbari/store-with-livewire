@@ -1,8 +1,7 @@
 <div class="grid-cols-1 gap-6 pt-5">
+    @include('admin.layouts.alert')
     <div class="panel">
         <div class="panel">
-            @include('admin.layouts.alert')
-            @include('admin.layouts.waiting')
             <h1 class="m-4 text-xl font-semibold">گالری محصول</h1>
             <form class="space-y-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -21,5 +20,30 @@
             </form>
         </div>
     </div>
+    @if($images)
+        <div class="panel">
+            <div class="m-5">
+                <div class="flex flex-wrap items-center justify-center gap-2 text-white">
+                    @foreach($images as $image)
+                        <div class="relative">
+                            <img src="{{$image->temporaryUrl()}}" alt="image" class="object-cover w-24 h-24 rounded-full">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+    <div class="panel">
+        <div class="m-5">
+            <div class="flex flex-wrap items-center justify-center gap-2 text-white">
+                @foreach($this->gallerire as $gallery)
+                    <div class="relative">
+                        <img src="{{url('images/products/'.$gallery->name)}}" alt="image" class="object-cover w-24 h-24 rounded-full">
+                        <span wire:click="removeImage({{$gallery->id}})" class="badge cursor-pointer
+                          absolute -top-3 rounded-full bg-danger p-0.5 px-1.5 ltr:right-0 rtl:left-0">x</span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>
-
