@@ -46,7 +46,7 @@ class RoleList extends Component
 
         ]);
         session()->flash('success', 'نقش جدید ایجاد شد');
-        $this->reset();
+        $this->reset('name');
     }
 
     public function editRow($id): void

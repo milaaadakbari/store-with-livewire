@@ -3,8 +3,8 @@
     <div class="shadow-sm">
         <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
             <div class="flex items-center justify-between horizontal-logo ltr:mr-2 rtl:ml-2 lg:hidden">
-                <a href="index.html" class="flex items-center main-logo shrink-0">
-                    <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="assets/images/logo.svg" alt="image"/>
+                <a href="{{route('home')}}" class="flex items-center main-logo shrink-0">
+                    <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="'panel/images/logo.svg')" alt="image"/>
                 </a>
 
                 <a href="javascript:;" class="collapse-icon flex flex-none rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary ltr:ml-2 rtl:mr-2 dark:bg-dark/40 dark:text-[#d0d2d6] dark:hover:bg-dark/60 dark:hover:text-primary lg:hidden" @click="$store.app.toggleSidebar()">
@@ -185,7 +185,7 @@
                                         <div class="relative w-12 h-12">
                                             <img
                                                 class="object-cover w-12 h-12 rounded-full"
-                                                :src="`assets/images/${notification.profile}`"
+                                                :src="images/${notification.profile)"
                                                 alt="image"
                                             />
                                             <span
@@ -261,7 +261,7 @@
                                         <span
                                         ><img
                                                 class="object-cover rounded-full h-9 w-9 saturate-50 group-hover:saturate-100"
-                                                src="assets/images/user-profile.jpeg"
+                                                src="images/user-profile.jpeg'"
                                                 alt="image"
                                             /></span>
                     </a>
@@ -276,17 +276,17 @@
                             <div class="flex items-center px-4 py-4">
                                 <div class="flex-none">
                                     <img class="object-cover w-10 h-10 rounded-md"
-                                         src="assets/images/user-profile.jpeg" alt="image"/>
+                                         src="images/user-profile.jpeg'" alt="image"/>
                                 </div>
                                 <div class="ltr:pl-4 rtl:pr-4">
                                     <h4 class="text-base">
-                                        جان دو<span
+                                        {{auth()->user()->name}}<span
                                             class="px-1 text-xs rounded bg-success-light text-success ltr:ml-2 rtl:ml-2">Pro</span>
                                     </h4>
                                     <a
                                         class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
                                         href="javascript:;"
-                                    >johndoe@gmail.com</a
+                                    >{{auth()->user()->email}}</a
                                     >
                                 </div>
                             </div>
@@ -379,7 +379,7 @@
                             >
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{route('logout')}}" class="!py-3 text-danger" @click="toggle">
                                 <svg
                                     class="h-4.5 w-4.5 rotate-90 ltr:mr-2 rtl:ml-2"
                                     width="18"
