@@ -15,13 +15,12 @@ class MobileVerificatedMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user=auth()->user();
-        if($user->mobile_verified_at){
+        $user =auth()->user();
+        if ($user->mobile_verified_at) {
             return $next($request);
         }
-        else{
-            return redirect()->route('show.mobile.verification');
-        }
+
+        return redirect()->route('show.mobile.verification');
 
     }
 }

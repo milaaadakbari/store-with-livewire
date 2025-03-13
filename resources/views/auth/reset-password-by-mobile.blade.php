@@ -6,13 +6,19 @@
             <div class="panel m-6 w-full max-w-lg sm:w-[480px]">
                 <h2 class="mb-3 text-2xl font-bold">تعیین رمز عبور جدید</h2>
 
-                <form class="space-y-5" method="POST" action="{{ route('password.store') }}">
+                <form class="space-y-5" method="POST" action="{{ route('check.reset.password.mobile') }}">
                     @csrf
-                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
                     <div>
-                        <label for="email">ایمیل</label>
-                        <input value="{{old('email', $request->email)}}"  id="email" name="email" type="email" class="form-input" placeholder="ایمیل را وارد کنید" />
-                        @error('email')
+                        <label for="mobile">موبایل</label>
+                        <input  id="mobile" name="mobile" type="text" class="form-input" placeholder="موبایل را وارد کنید" />
+                        @error('mobile')
+                        <p class="mt-2 text-rose-500>{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="email"> کددریافتی</label>
+                        <input  id="code" name="code" type="text" class="form-input" placeholder="کد را وارد کنید" />
+                        @error('code')
                         <p class="mt-2 text-rose-500>{{$message}}</p>
                         @enderror
                     </div>
@@ -29,7 +35,7 @@
                     </div>
 
                     <button type="submit" class="w-full btn btn-primary">تغییر رمز عبور</button>
-                </form>لهف
+                </form>
             </div>
         </div>
         <!-- end main content section -->

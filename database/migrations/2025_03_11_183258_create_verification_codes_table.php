@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('verification_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('mobie');
+            $table->string('mobile');
             $table->string('code');
             $table->timestamps();
         });
