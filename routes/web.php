@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Front\HomePage;
+use App\Livewire\Front\SingleProduct;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,3 +23,4 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/', HomePage::class)->name('home');
+Route::get('/single_product/{product}', SingleProduct::class)->name('single.product');

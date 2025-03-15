@@ -15,4 +15,5 @@ class Guaranty extends Model
     {
         return $this->belongsToMany(Color::class, 'color_product');
     }
+
 }

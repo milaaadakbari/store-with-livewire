@@ -4,7 +4,7 @@
             <div class="col-12 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-lg-01.gif" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-lg-01.gif')}}" alt="banner">
                     </a>
                 </div>
             </div>
@@ -16,47 +16,47 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-1.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-1.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-2.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-2.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-3.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-3.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-4.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-4.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-5.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-5.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-6.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-6.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-7.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-7.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-8.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-8.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="#">
-                                    <img src="./assets/images/main-slider/slider-9.jpg" alt="">
+                                    <img src="{{url('frontend/images/main-slider/slider-9.jpg')}}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -102,14 +102,14 @@
                     <div class="col-lg-12 col-sm-6 col-12">
                         <div class="banner mb-3">
                             <a href="#">
-                                <img src="./assets/images/banner/banner-md-03.gif" alt="banner">
+                                <img src="{{url('frontend/images/banner/banner-md-03.gif')}}" alt="banner">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-12 col-sm-6 col-12">
                         <div class="banner">
                             <a href="#">
-                                <img src="./assets/images/banner/banner-md-2.jpg" alt="banner">
+                                <img src="{{url('frontend/images/banner/banner-md-2.jpg')}}" alt="banner">
                             </a>
                         </div>
                     </div>
@@ -122,14 +122,14 @@
                     <div class="col-lg-12 col-sm-6 col-12">
                         <div class="banner mb-4">
                             <a href="#">
-                                <img src="./assets/images/banner/banner-md-05.gif" alt="banner">
+                                <img src="{{url('frontend/images/banner/banner-md-05.gif')}}" alt="banner">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-12 col-sm-6 col-12">
                         <div class="banner">
                             <a href="#">
-                                <img src="./assets/images/banner/banner-md-04.gif" alt="banner">
+                                <img src="{{url('frontend/images/banner/banner-md-04.gif')}}" alt="banner">
                             </a>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                                                 <div class="offer-slide-content">
                                                     <div class="product-thumbnail">
                                                         <a href="#">
-                                                            <img src="./assets/images/offer-slider/01.jpg"
+                                                            <img src="{{url('frontend/images/offer-slider/01.jpg')}}"
                                                                  alt="item">
                                                         </a>
                                                     </div>
@@ -183,7 +183,7 @@
                                                 <div class="offer-slide-content">
                                                     <div class="product-thumbnail">
                                                         <a href="#">
-                                                            <img src="./assets/images/offer-slider/02.jpg"
+                                                            <img src="{{url('frontend/images/offer-slider/02.jpg')}}"
                                                                  alt="item">
                                                         </a>
                                                     </div>
@@ -207,7 +207,7 @@
                                                 <div class="offer-slide-content">
                                                     <div class="product-thumbnail">
                                                         <a href="#">
-                                                            <img src="./assets/images/offer-slider/03.jpg"
+                                                            <img src="{{url('frontend/images/offer-slider/03.jpg')}}"
                                                                  alt="item">
                                                         </a>
                                                     </div>
@@ -230,7 +230,7 @@
                                                 <div class="offer-slide-content">
                                                     <div class="product-thumbnail">
                                                         <a href="#">
-                                                            <img src="./assets/images/offer-slider/04.jpg"
+                                                            <img src="{{url('frontend/images/offer-slider/04.jpg')}}"
                                                                  alt="item">
                                                         </a>
                                                     </div>
@@ -254,7 +254,7 @@
                                                 <div class="offer-slide-content">
                                                     <div class="product-thumbnail">
                                                         <a href="#">
-                                                            <img src="./assets/images/offer-slider/05.jpg"
+                                                            <img src="{{url('frontend/images/offer-slider/05.jpg')}}"
                                                                  alt="item">
                                                         </a>
                                                     </div>
@@ -273,19 +273,19 @@
                                     <div class="swiper-container offer-slider-thumbs">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <img src="./assets/images/offer-slider/01.jpg" alt="item">
+                                                <img src="{{url('frontend/images/offer-slider/01.jpg')}}" alt="item">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="./assets/images/offer-slider/02.jpg" alt="item">
+                                                <img src="{{url('frontend/images/offer-slider/02.jpg')}}" alt="item">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="./assets/images/offer-slider/03.jpg" alt="item">
+                                                <img src="{{url('frontend/images/offer-slider/03.jpg')}}" alt="item">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="./assets/images/offer-slider/04.jpg" alt="item">
+                                                <img src="{{url('frontend/images/offer-slider/04.jpg')}}" alt="item">
                                             </div>
                                             <div class="swiper-slide">
-                                                <img src="./assets/images/offer-slider/05.jpg" alt="item">
+                                                <img src="{{url('frontend/images/offer-slider/05.jpg')}}" alt="item">
                                             </div>
                                         </div>
                                         <!-- Add Pagination -->
@@ -309,45 +309,61 @@
         <section class="product-carousel in-box">
             <div class="section-title">
                 <i class="fad fa-percentage"></i>
-                منتخب محصولات تخفیف و حراج
+               جدیدترین محصولات
             </div>
             <div class="swiper-container slider-lg pb-0">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="product-box">
-                            <div class="product-box--thumbnail-container">
-                                <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/01.jpg" class="product-box--thumbnail"
-                                     alt="product title">
-                                <a href="#" class="product-box--link"></a>
-                            </div>
-                            <div class="product-box--detail">
-                                <h3 class="product-box--title"><a href="#">گوشی موبایل هوآوی مدل nova 9 NAM-LX9
-                                        دو سیم کارت ظرفیت 128گیگابایت و 8 گیگابایت رم</a></h3>
-                                <div class="product-box--price-container">
-                                    <div class="product-box--price-discount">6%</div>
-                                    <div class="product-box--price">
+                    @foreach($this->newestProducts as $newProduct)
+                        <div class="swiper-slide">
+                            <div class="product-box">
+                                <div class="product-box--thumbnail-container">
+                                    <span class="product-box--specialSell"></span>
+                                    <img src="{{url('images/products/'.$newProduct->image)}}" class="product-box--thumbnail"
+                                         alt="product title">
+                                    <a href="{{route('single.product',$newProduct->id)}}" class="product-box--link"></a>
+                                </div>
+                                <div class="product-box--detail">
+                                    <h3 class="product-box--title">{{$newProduct->name}}<a href="{{route('single.product',$newProduct->id)}}">
+                                            </a></h3>
+                                    <div class="product-box--price-container">
+                                        @if($newProduct->discount)
+                                            <div class="product-box--price-discount">{{$newProduct->discount}}%</div>
+                                        @endif
+                                        <div class="product-box--price">
+                                            @if($newProduct->discount)
                                                 <span class="product-box--price-now">
-                                                    <div class="product-box--price-value">10,359,000</div>
+                                                    <div class="product-box--price-value">
+                                                        {{ $newProduct->price - ($newProduct->price * $newProduct->discount)/100 }}
+                                                    </div>
                                                     <div class="product-box--price-currency">تومان</div>
                                                 </span>
-                                        <span class="product-box--price-old">10,990,000</span>
+                                                <span class="product-box--price-old">{{$newProduct->price}}</span>
+                                            @else
+                                                <span class="product-box--price-now pt-4">
+                                                    <div class="product-box--price-value">{{$newProduct->price}}</div>
+                                                    <div class="product-box--price-currency">تومان</div>
+                                                </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-box--action">
-                                    <a href="#" class="product-box--action-btn product-box--action-wishlist"><i
-                                            class="fas fa-heart"></i></a>
-                                    <a href="#" class="product-box--action-btn product-box--action-cart">اضافه
-                                        سبد</a>
+                                    <div class="product-box--action">
+                                        <a href="#" class="product-box--action-btn product-box--action-wishlist"><i
+                                                class="fas fa-heart"></i></a>
+                                        <a href="#" class="product-box--action-btn product-box--action-cart">اضافه
+                                            سبد</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
+
+
                     <div class="swiper-slide">
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/02.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/02.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -377,7 +393,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/03.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/03.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -407,7 +423,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/04.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/04.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -437,7 +453,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/05.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/05.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -467,7 +483,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/06.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/06.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -497,7 +513,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/07.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/07.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -527,7 +543,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/08.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/08.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -563,28 +579,28 @@
             <div class="col-md-3 col-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-sm-01.jpg" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-sm-01.jpg')}}" alt="banner">
                     </a>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-sm-02.jpg" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-sm-02.jpg')}}" alt="banner">
                     </a>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-sm-03.jpg" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-sm-03.jpg')}}" alt="banner">
                     </a>
                 </div>
             </div>
             <div class="col-md-3  col-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-sm-04.jpg" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-sm-04.jpg')}}" alt="banner">
                     </a>
                 </div>
             </div>
@@ -600,7 +616,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/05.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/05.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -630,7 +646,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/06.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/06.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -660,7 +676,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/07.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/07.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -690,7 +706,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/08.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/08.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -720,7 +736,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/01.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/01.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -750,7 +766,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/02.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/02.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -780,7 +796,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/03.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/03.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -810,7 +826,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="./assets/images/products/04.jpg" class="product-box--thumbnail"
+                                <img src="{{url('frontend/images/products/04.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -846,14 +862,14 @@
             <div class="col-md-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-md-01.jpg" alt="banner">
+                        <img src="{{url('frontend/images/banner/banner-md-01.jpg')}}" alt="banner">
                     </a>
                 </div>
             </div>
             <div class="col-md-6 mb-lg-0 mb-3">
                 <div class="banner">
                     <a href="#">
-                        <img src="./assets/images/banner/banner-md-02.jpg" alt="banner">
+{{--                        <img src="{{url('frontend'/images/banner/banner-md-02.jpg)}}" alt="banner">--}}
                     </a>
                 </div>
             </div>

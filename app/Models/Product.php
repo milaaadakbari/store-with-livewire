@@ -24,6 +24,9 @@ class Product extends Model
         'status',
         'category_id',
         'brand_id',
+        'color_id',
+        'guaranty_id'
+
     ];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -53,5 +56,10 @@ class Product extends Model
     public function galleries(): HasMany
     {
         return $this->hasMany(Gallery::class);
+    }
+
+    public function productPrices(): HasMany
+    {
+        return $this->hasMany(ProductPrice::class);
     }
 }
