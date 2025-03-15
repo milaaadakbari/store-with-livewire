@@ -25,6 +25,8 @@ return new class extends Migration
             $table->integer('sold')->default(0);
             $table->string('image');
             $table->text('description');
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->unsignedBigInteger('guaranty_id')->nullable();
             $table->softDeletes();
             $table->string('status')->default(ProductStatus::ACTIVE->value);
             $table->foreignId('category_id')->constrained('categories');

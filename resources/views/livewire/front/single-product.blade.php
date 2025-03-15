@@ -1,4 +1,4 @@
-<main class="page-content">
+<main class="page-content" wire:ignore.self>
     <div class="container">
         <div class="row mb-1">
             <div class="col-12">
@@ -8,7 +8,7 @@
                         <a href="#">فروشگاه اینترنتی</a>
                         <a href="#">{{$product->category->parentCategory->name}}</a>
                         <a href="#">{{$product->category->name}}</a>
-                        <a>{{$product->name}} - {{$product->e_name}}</a>
+                        <a> {{$product->name}} - {{$product->e_name}} </a>
                     </nav>
                 </div>
                 <!-- end breadcrumb -->
@@ -21,47 +21,13 @@
                         <div class="swiper-container gallery-slider pb-md-0 pb-3">
                             <div class="swiper-wrapper">
                                 @foreach($product->galleries as $gallery)
-                                <div class="swiper-slide">
-                                    <img src="{{url('images/products/'.$gallery->name)}}"
-                                         data-large="{{url('images/products/'.$gallery->name)}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{asset('images/products/'. $gallery->name)}}"
+                                             data-large="{{asset('images/products/'. $gallery->name)}}" class="zoom-image"
+                                             alt="gallery item">
+                                    </div>
                                 @endforeach
-                                <div class="swiper-slide">
-                                    <img src="{{url('images/products/'.$product->image)}}"
-                                         data-large="{{url('images/products/'.$product->image)}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('images/products/'.$product->image)}}"
-                                         data-large="{{url('frontend/images/gallery/03.png')}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('frontend/images/gallery/04.png')}}"
-                                         data-large="{{url('frontend/images/gallery/04.png')}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('frontend/images/gallery/05.png')}}"
-                                         data-large="{{url('frontend/images/gallery/05.png')}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('frontend/images/gallery/06.png')}}"
-                                         data-large="{{url('frontendimages/gallery/06.png')}}/" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('frontend/images/gallery/07.png')}}"
-                                         data-large="{{url('frontend/images/gallery/07.png')}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{url('frontend/images/gallery/08.png')}}"
-                                         data-large="{{url('frontend/images/gallery/08.png')}}" class="zoom-image"
-                                         alt="gallery item">
-                                </div>
+
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination d-md-none"></div>
@@ -70,11 +36,9 @@
                             <div class="swiper-wrapper">
                                 @foreach($product->galleries as $gallery)
                                     <div class="swiper-slide">
-                                        <img src="{{url('images/products/'.$gallery->name)}} alt="gallery item">
+                                        <img src="{{asset('images/products/'. $gallery->name)}}" alt="gallery item">
                                     </div>
                                 @endforeach
-
-
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
@@ -121,19 +85,20 @@
                     </div>
                     <div class="d-block mb-4">
                         <span class="font-weight-bold">گارانتی:</span>
-                        <span>18 ماهه</span>
+                        <span>{{$product->productPrices()->orderBy('main_price','ASC')->first()->guaranty->name}}</span>
                     </div>
                     <div class="product-params-special">
-                        <ul data-title="ویژگی‌های محصول">
+                        <ul  data-title="ویژگی‌های محصول">
                             @foreach($product->category->categoryAttributes()->with('productProperties')->get() as $attribute)
-                            <li>
-                                <span>{{$attribute->name}}</span>
-                                @foreach($attribute->productProperties as $property)
-                                    <span>{{$property->name}}</span>
-                                @endforeach
-                                @endforeach
-                            </li>
-
+                                <li>
+                                    <span>{{$attribute->name}}:</span>
+                                    <ul>
+                                        @foreach($attribute->productProperties as $property)
+                                            <li>{{$property->name}}</li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="alert alert-warning">
@@ -151,10 +116,11 @@
                             <span class="d-block mb-3">رنگ:</span>
                             <div class="input-radio-color">
                                 <div class="input-radio-color__list">
-                                    @foreach($product->colors as $colors)
-                                        <label class="input-radio-color__item input-radio-color__item--white"
-{{--                                               style="color: {{$colors->code}};">--}}
-                                            <input type="radio" name="color"> <span></span>
+                                    @foreach($product->colors as $color)
+                                        <label wire:click="getProductByColor({{$color->id}})" class="input-radio-color__item  input-radio-color__item--white"
+                                               style="color: {{$color->code}};">
+                                            <input type="radio" name="color"> <span
+                                                @if($color->id === $selected_color)  class="border border-circle border-danger" @endif></span>
                                         </label>
                                     @endforeach
                                 </div>
@@ -166,33 +132,33 @@
                                     </span>
                             <div class="num-block">
                                 <div class="num-in">
-                                    <span class="plus"></span>
-                                    <input type="text" class="in-num" value="1" readonly="">
-                                    <span class="minus dis"></span>
+                                    <span wire:click="increaseProductCount" class="plus"></span>
+                                    <input wire:model="count" type="text" readonly="">
+                                    <span wire:click="decreaseProductCount" class="minus dis"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex align-items-center justify-content-end mt-3">
                             <div class="product-price">
-                                @if($product->discount)
+                                @if($discount)
                                     <div class="product-price-info">
                                         <div class="product-price-off">
-                                            %{{$product->discount}} <span>تخفیف</span>
+                                            %{{$discount}} <span>تخفیف</span>
                                         </div>
                                         <div class="product-price-prev">
-                                            {{$product->price}}
+                                            {{$price}}
                                         </div>
                                     </div>
                                 @endif
 
                                 <div class="product-price-real">
-                                    <div class="product-price-raw">{{$product->price -(($product->price * $product->discount)/100)}} </div>
+                                    <div class="product-price-raw">{{$price - (($price * $discount )/100)}}</div>
                                     تومان
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="#" class="add-to-cart">
+                            <a href="#" wire:click.prevent="addToCart" class="add-to-cart">
                                 افزودن به سبد خرید
                             </a>
                         </div>
@@ -209,7 +175,7 @@
             <div class="services pt-3 row mx-0">
                 <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
                     <div class="service-item">
-                        <img src="{{url('frontend/images/services/delivery-person.png')}}" alt="">
+                        <img src="{{asset('frontend/images/services/delivery-person.png')}}" alt="">
                         <div class="service-item-body">
                             <h6>تحویل سریع و رایگان</h6>
                             <p>تحویل رایگان کالا برای کلیه سفارشات بیش از 500 هزار تومان</p>
@@ -218,7 +184,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
                     <div class="service-item">
-                        <img src="{{url('frontend/images/services/recieve.png')}}" alt="">
+                        <img src="{{asset('frontend/images/services/recieve.png')}}" alt="">
                         <div class="service-item-body">
                             <h6>۷ روز ضمانت بازگشت</h6>
                             <p>در صورت نارضایتی به هر دلیلی می توانید محصول را بازگردانید</p>
@@ -227,7 +193,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
                     <div class="service-item">
-                        <img src="{{url('frontend/images/services/headset.png')}}" alt="">
+                        <img src="{{asset('frontend/images/services/headset.png')}}" alt="">
                         <div class="service-item-body">
                             <h6>پشتیبانی ۲۴ ساعته</h6>
                             <p>در صورت وجود هرگونه سوال یا ابهامی، با ما در تماس باشید</p>
@@ -236,7 +202,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6 mb-md-0 mb-4">
                     <div class="service-item">
-                        <img src="{{url('frontend/images/services/debit-card.png')}}" alt="">
+                        <img src="{{asset('frontend/images/services/debit-card.png')}}" alt="">
                         <div class="service-item-body">
                             <h6>پرداخت آنلاین ایمن</h6>
                             <p>محصولات مدنظر خود را با خیال آسوده به صورت آنلاین خریداری کنید</p>
@@ -247,92 +213,51 @@
         </div>
         <!-- sellers -->
         <div class="product-sellers shadow-around mb-5">
-            <div class="product-seller">
-                <div class="product-seller-col">
-                    <div class="product-seller-title">
-                        <div class="icon">
-                            <i class="fas fa-store-alt"></i>
-                        </div>
-                        <div class="detail">
-                            <div class="name">همتا <span class="badge badge-light rounded-pill">برگزیده</span>
+            @foreach($product_prices as $product_price)
+                <div class="product-seller">
+                    <div class="product-seller-col">
+                        <div class="product-seller-title">
+                            <div class="icon">
+                                <i class="fas fa-store-alt"></i>
                             </div>
-                            <div class="rating">
-                                <span class="value">۹۰.۲٪</span>
-                                <span class="label">رضایت خریداران</span>
-                                <span class="divider">|</span>
-                                <span class="label">عملکرد</span>
-                                <span class="value">عالی</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-conditions">
-                        <div class="product-seller-info">
-                            <i class="fad fa-truck-container"></i>
-                            <span>ارسال از همتا</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-guarantee">
-                        <div class="product-seller-info">
-                            <i class="fad fa-shield-check"></i>
-                            <span>گارانتی ۱۸ ماهه همتا</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-price-action">
-                        <div class="product-seller-price">۵,۵۵۰,۰۰۰<span class="currency">تومان</span></div>
-                        <div class="product-seller-action"><a href="#" class="btn btn-outline-danger">افزودن به
-                                سبد</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-seller">
-                <div class="product-seller-col">
-                    <div class="product-seller-title">
-                        <div class="icon">
-                            <i class="fas fa-store-alt"></i>
-                        </div>
-                        <div class="detail">
-                            <div class="name">همتا <span class="badge badge-light rounded-pill">برگزیده</span>
-                            </div>
-                            <div class="rating">
-                                <span class="value">۹۰.۲٪</span>
-                                <span class="label">رضایت خریداران</span>
-                                <span class="divider">|</span>
-                                <span class="label">عملکرد</span>
-                                <span class="value">عالی</span>
+                            <div class="detail">
+                                <div class="name">{{$product_price->guaranty->name}}<span class="badge badge-light rounded-pill">برگزیده</span>
+                                </div>
+                                <div class="rating">
+                                    <span class="value">۹۰.۲٪</span>
+                                    <span class="label">رضایت خریداران</span>
+                                    <span class="divider">|</span>
+                                    <span class="label">عملکرد</span>
+                                    <span class="value">عالی</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-conditions">
-                        <div class="product-seller-info">
-                            <i class="fad fa-truck-container"></i>
-                            <span>ارسال از همتا</span>
+                    <div class="product-seller-col">
+                        <div class="product-seller-conditions">
+                            <div class="product-seller-info">
+                                <i class="fad fa-truck-container"></i>
+                                <span>ارسال از همتا</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-seller-col">
+                        <div class="product-seller-guarantee">
+                            <div class="product-seller-info">
+                                <i class="fad fa-shield-check"></i>
+                                <span>گارانتی ۱۸ ماهه همتا</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-seller-col">
+                        <div class="product-seller-price-action">
+                            <div class="product-seller-price">{{$product_price->price}}<span class="currency">تومان</span></div>
+                            <div class="product-seller-action"><a href="#" class="btn btn-outline-danger">افزودن به
+                                    سبد</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-guarantee">
-                        <div class="product-seller-info">
-                            <i class="fad fa-shield-check"></i>
-                            <span>گارانتی ۱۸ ماهه همتا</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-seller-col">
-                    <div class="product-seller-price-action">
-                        <div class="product-seller-price">۵,۵۵۰,۰۰۰<span class="currency">تومان</span></div>
-                        <div class="product-seller-action"><a href="#" class="btn btn-outline-danger">افزودن به
-                                سبد</a></div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <!-- end sellers -->
         <!-- product-tab-content -->
@@ -399,7 +324,7 @@
                                                     سامسونگ Galaxy
                                                     A30s خواهیم پرداخت.
                                                 </p>
-                                                <img src="{{url('frontendimages/single-product/01.jpg')}}/" alt="">
+                                                <img src="{{asset('frontend/images/single-product/01.jpg')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -435,7 +360,7 @@
                                                     ترتیب قاب پشتی
                                                     این گوشی نسبت گلکسی A30 کمی ساده تر به نظر می رسد.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/02.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/02.jpg')}}" alt="">
                                                 <p>
                                                     کلیدهای کنترل میزان صدا و کلید پاور هر دو در یک سمت گوشی
                                                     قرار گرفته‎اند تا
@@ -445,7 +370,7 @@
                                                     ورودی هدفون 3.5
                                                     میلی‎متری، اسپیکر و درگاه پورت USB-C قرار گرفته است.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/03.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/03.jpg')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -477,7 +402,7 @@
                                                     1560 × 720 پیکسل
                                                     است در مقایسه با Galaxy A30 کمتر شده است.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/04.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/04.jpg')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -507,7 +432,7 @@
                                                     توانید عکس‎های
                                                     پرتره خوبی را با محو کردن زمینه پشتی عکس ثبت نمایید.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/05.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/05.jpg')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -539,7 +464,7 @@
                                                     تواند در تنظیمات
                                                     متوسط اجرا نماید.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/06.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/06.jpg')}}" alt="">
                                                 <p>
                                                     این گوشی با سیستم‌عامل اندروید نسخه 9.0 به بازار عرضه شده
                                                     است که سیستم‌عاملی
@@ -576,7 +501,7 @@
                                                     سریع در دسترس
                                                     است.
                                                 </p>
-                                                <img src="{{url('frontend/images/single-product/07.jpg')}}" alt="">
+                                                <img src="{{asset('frontend/images/single-product/07.jpg')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -1258,7 +1183,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/05.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/05.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1288,7 +1213,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/06.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/06.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1318,7 +1243,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/07.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/07.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1348,7 +1273,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/08.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/08.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1378,7 +1303,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/01.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/01.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1408,7 +1333,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/02.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/02.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1438,7 +1363,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/03.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/03.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>
@@ -1468,7 +1393,7 @@
                         <div class="product-box">
                             <div class="product-box--thumbnail-container">
                                 <span class="product-box--specialSell"></span>
-                                <img src="{{url('frontend/images/products/04.jpg')}}" class="product-box--thumbnail"
+                                <img src="{{asset('frontend/images/products/04.jpg')}}" class="product-box--thumbnail"
                                      alt="product title">
                                 <a href="#" class="product-box--link"></a>
                             </div>

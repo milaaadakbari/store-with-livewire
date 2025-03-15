@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Products;
 use App\Enums\ProductStatus;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
+use App\Models\Guaranty;
 use App\Models\Product;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
@@ -41,6 +43,8 @@ class CreateProduct extends Component
 
     #[Validate('required')]
     public $category_id,$brand_id;
+    public $color_id,$guaranty_id;
+
 
 
     public $editIndex;
@@ -66,7 +70,9 @@ class CreateProduct extends Component
             'brand_id' =>$this->brand_id,
             'status'=>ProductStatus::ACTIVE->value,
             'slug' => make_slug($this->name),
-            'image' => $image
+            'image' => $image,
+            'color_id'=>$this->color_id,
+            'guaranty_id'=>$this->guaranty_id
         ]);
         session()->flash('success', 'محصول جدید ایجاد شد');
         $this->reset();
@@ -80,7 +86,9 @@ class CreateProduct extends Component
             ->where('parent_id','!=',null)
             ->pluck('name','id');
         $brands = Brand::query()->pluck('name','id');
-        return view('livewire.admin.products.create-product',compact('categories','brands'));
+        $colors=Color::query()->pluck('name','id');
+        $guaranties=Guaranty::query()->pluck('name','id');
+        return view('livewire.admin.products.create-product',compact('categories','brands','colors','guaranties'));
     }
 }
 

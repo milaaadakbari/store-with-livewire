@@ -87,6 +87,8 @@ class CreateProductPrice extends Component
                     'discount' => $this->discount,
                     'count' => $this->count,
                     'max_sell' => $this->max_sell,
+                    'color_id'=>$this->color_id,
+                    'guaranty_id'=>$this->guaranty_id,
                 ]);
             }
 
